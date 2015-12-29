@@ -1,0 +1,25 @@
+{
+  "name": "tri-rail-schedule",
+  "version": "1.0.0",
+  "description": "Library that returns tri rail schedule",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/winfinit/tri-rail-schedule.git"
+  },
+  "keywords": [
+    "trirail",
+    "tri-rail",
+    "tri",
+    "rail"
+  ],
+  "author": "Roman Jurkov <winfinit@gmail.com>",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/winfinit/tri-rail-schedule/issues"
+  },
+  "homepage": "https://github.com/winfinit/tri-rail-schedule#readme"
+}
