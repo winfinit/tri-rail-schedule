@@ -1,6 +1,6 @@
 # tri-rail-schedule
 
-**tri-rail-schedule** is a library that allows one to query SFRTA Tri-Rail schedule offline. They dont have web services onfurtunatly (or they are hiding it well...), so there is a parser that does ugly scraping.
+**tri-rail-schedule** is a library that allows one to query SFRTA Tri-Rail schedule offline. They dont have web services unfurtunatly (or they are hiding it well...), so there is a parser that does ugly scraping, and saves it into a JSON structure.
 
 **This is not an official library from SFRTA or Tri Rail, please do not contact them for support, however you can always open bugs against this project on github**
 
