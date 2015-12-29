@@ -28,13 +28,43 @@ var station_map = [
   'Mangonia Park' 
 ];
 
+// [lat, lon]
+var station_coordinates = [
+  [25.795941,-80.258335], // Miami Airport
+  [25.811239,-80.258703], // Hialeah Market
+  [25.846394,-80.25961699999999], // Metrorail Transfer
+  [25.900036,-80.25269399999999], // Opa-Locka
+  [25.92155,-80.216917], // Golden Glades
+  [26.012411,-80.167658], // Hollywood Street
+  [26.032217,-80.168086], // 'Sheridan Street',
+  [26.061653,-80.165683], // 'Ft. Lauderdale Airport',
+  [26.119942,-80.169808], // 'Ft. Lauderdale',
+  [26.201194,-80.150369], // 'Cypress Creek',
+  [26.272286,-80.13481399999999], // 'Pompano Beach',
+  [26.316863,-80.122553], // 'Deerfield Beach',
+  [26.3927,-80.09903299999999], // 'Boca Raton',
+  [26.454242,-80.09096699999999], // 'Delray Beach',
+  [26.553783,-80.07059699999999], // 'Boynton Beach',
+  [26.616142,-80.069133], // 'Lake Worth',
+  [26.713299,-80.062539], // 'West Palm Beach',
+  [26.758744,-80.076933], // 'Mangonia Park' 
+];
+
 
 function getStationName(station_index) {
     return station_map[station_index-1];
 }
 
+function getStationCoordinates(station_index) {
+    return station_coordinates[station_index - 1];
+}
+
 function listStations() {
     return station_map;
+}
+
+function listStationsCoordinates() {
+    return station_coordinates;
 }
 
 function getByDepartureIdAndTrainId(departure_station_id, train_id) {
@@ -87,7 +117,9 @@ function formatTime(seconds) {
 
 module.exports = {
     "getStationName": getStationName,
-    "getStations": listStations,
+    "getStationCoordinates": getStationCoordinates,
+    "listStations": listStations,
+    "listStationsCoordinates": listStationsCoordinates,
     "getByDepartureIdAndTrainId": getByDepartureIdAndTrainId,
     "getByDepartureIdAndScheduleId": getByDepartureIdAndScheduleId,
     "getByDepartureIdAndArrivaldAndScheduleId": getByDepartureIdAndArrivaldAndScheduleId,

@@ -23,6 +23,13 @@ times.forEach(function(row, index) {
 ```
 
 ## Methods
+# .getStationCoordinates(returned_station_id)
+returns GEO coordinates array for passed station [lat, lon]
+
+```javascript
+TriRailSchedule.getStationCoordinates(14); // [ 26.454242, -80.09096699999999 ]
+```
+
 # .getStationName(returned_station_id)
 return station name from station ID
 
@@ -36,7 +43,6 @@ return formatted time
 ```javascript
 TriRailSchedule.formatTime(79260); // 10:01PM
 ```
-
 
 # .getByDepartureIdAndTrainId(departure_station_id, train_id)
 returns array of objects matching departure station id, and train id passed
@@ -61,12 +67,16 @@ TriRailSchedule.getByDepartureIdAndArrivaldAndScheduleId(1, 2, TriRailSchedule.w
 
 ## Helpers
 
-# .getStations
+# .listStations
 returns array of ordered stations where index is offset by one from real station id
 
 ```javascript
 TriRailSchedule.getStations; // ["Miami Airport", ...]
 ```
+
+# .listStationsCoordinates
+returns array of TriRail stations coordinates [[lat,lan], ...]
+
 
 # .weekday
 returns weekday id
