@@ -1,6 +1,7 @@
 var request = require('request');
 var async = require('async');
 var fs = require('fs');
+var build_index = require('./build_index');
 
 var url = "http://www.tri-rail.com/train-schedules/TrainSchedule.aspx";
 
@@ -94,60 +95,7 @@ async.each(possibilities, function(data, next) {
         } 
     }); 
     // lets build indexes now
-    //{"train_id":"P601","departure_time":20280,"arrival_time":21000,"schedule_id":1,"departure_station_id":3,"arrival_station_id":1,"direction":"s"}
-    var temp_filter = {};
-    master_list.forEach(function(row, index) {
-        if (! dep_train_idx[row.departure_station_id] ) {
-            dep_train_idx[row.departure_station_id] = {};
-        }
-        if (! dep_train_idx[row.departure_station_id][row.train_id] ) {
-            dep_train_idx[row.departure_station_id][row.train_id] = [];
-        }
-        if (! dep_sched_idx[row.departure_station_id] ) {
-            dep_sched_idx[row.departure_station_id] = [];
-        }
-        if (! dep_sched_idx[row.departure_station_id][row.schedule_id] ) {
-            dep_sched_idx[row.departure_station_id][row.schedule_id] = [];
-        }
-        if (! dep_ar_sched_idx[row.departure_station_id] ) {
-            dep_ar_sched_idx[row.departure_station_id] = [];
-        }
-        if (! dep_ar_sched_idx[row.departure_station_id][row.arrival_station_id] ) {
-            dep_ar_sched_idx[row.departure_station_id][row.arrival_station_id] = [];
-        }
-        if (! dep_ar_sched_idx[row.departure_station_id][row.arrival_station_id][row.schedule_id] ) {
-            dep_ar_sched_idx[row.departure_station_id][row.arrival_station_id][row.schedule_id] = [];
-        }
-
-        if (! temp_filter[row.departure_station_id + "_" + row.train_id] ) {
-            temp_filter[row.departure_station_id + "_" + row.train_id] = 1;
-            dep_train_idx[row.departure_station_id][row.train_id].push(index);
-            dep_sched_idx[row.departure_station_id][row.schedule_id].push(index);
-        }
-
-        dep_ar_sched_idx[row.departure_station_id][row.arrival_station_id][row.schedule_id].push(index);
-    });
-
-    // save indexes
-    fs.writeFile("raw_data/dep_train_idx.json", JSON.stringify(dep_train_idx), function(err) {
-        if(err) {
-          console.log(err);
-        } 
-        console.log('wrote dep_train_idx.json');
-    }); 
-    fs.writeFile("raw_data/dep_sched_idx.json", JSON.stringify(dep_sched_idx), function(err) {
-        if(err) {
-          console.log(err);
-        } 
-        console.log('wrote dep_sched_idx.json');
-    }); 
-    fs.writeFile("raw_data/dep_ar_sched_idx.json", JSON.stringify(dep_ar_sched_idx), function(err) {
-        if(err) {
-          console.log(err);
-        } 
-        console.log('wrote dep_ar_sched_idx.json');
-    }); 
-
+    build_index();
 });
 
 
